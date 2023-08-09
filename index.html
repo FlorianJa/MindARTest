@@ -95,16 +95,17 @@
   </div>
 
 
-  <a-scene mindar-image="imageTargetSrc: ./CE-Marker.mind; uiScanning: #example-scanning-overlay; showStats: true;" color-space="sRGB"
-    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+  <a-scene mindar-image="imageTargetSrc: ./CE-Marker.mind; uiScanning: #example-scanning-overlay; showStats: true;"
+    color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
     <a-assets>
-    <!-- Add Assets here -->
+      <img id="card"
+        src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.png" />
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity mindar-image-target="targetIndex: 0">
-      <!--add scene content here  -->
+      <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
     </a-entity>
   </a-scene>
 </body>

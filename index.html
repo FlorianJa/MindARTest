@@ -160,7 +160,7 @@
 				startVideoPlayer("#video-waste-mp4");
 			});
 
-			let btn = document.querySelector("fullscreen-button");
+			let btn = document.querySelector("#fullscreen-button");
 			btn.addEventListener("click", function () {
 				console.log("fullscreen but clicked");
 				let scene = document.querySelector('a-scene');
@@ -219,7 +219,7 @@
 		</div>
 	</div>
 	<div style="position: absolute; z-index: 1000">
-		<button id="fullscreen-button">Fullscreen</button>
+		<button id="fullscreen-button" class="clickable">Fullscreen</button>
 	</div>
 
 	<a-scene

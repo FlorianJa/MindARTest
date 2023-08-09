@@ -115,34 +115,30 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			console.log("DOM content loaded");
+			const sceneEl = document.querySelector('a-scene');
+			const compatibilityOverlay = document.querySelector("#example-compatibility-overlay");
+			
+			// arError event triggered when something went wrong. Mostly browser compatbility issue
+			sceneEl.addEventListener("arError", (event) => {
+				compatibilityOverlay.style.display = "block";
+			});
+
+
 			const playButtonEcodesign = document.querySelector("#playbutton-ecodesign");
 			const playButtonProduction = document.querySelector("#playbutton-production");
 			const playButtonUsage = document.querySelector("#playbutton-usage");
 			const playButtonResources = document.querySelector("#playbutton-resources");
 			const playButtonWaste = document.querySelector("#playbutton-waste");
 
-			const videoEcodesign = document.querySelector("#video-ecodesign-mp4");
-			const videoProduction = document.querySelector("#video-ecodesign-mp4");
-			const videoUsage = document.querySelector("#video-ecodesign-mp4");
-			const videoResources = document.querySelector("#video-ecodesign-mp4");
-			const videoWaste = document.querySelector("#video-ecodesign-mp4");
-
-
-			const sceneEl = document.querySelector('a-scene');
-			const compatibilityOverlay = document.querySelector("#example-compatibility-overlay");
-			// arError event triggered when something went wrong. Mostly browser compatbility issue
-			sceneEl.addEventListener("arError", (event) => {
-				compatibilityOverlay.style.display = "block";
-			});
-
-			const testVideo = document.createElement("video");
-			const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
-			if (canplayWebm == "") {
-				console.log("cannot play webm");
-			}
-			else {
-				console.log("can play webm");
-			}
+						
+			// const testVideo = document.createElement("video");
+			// const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
+			// if (canplayWebm == "") {
+			// 	console.log("cannot play webm");
+			// }
+			// else {
+			// 	console.log("can play webm");
+			// }
 
 			playButtonEcodesign.addEventListener('click', function (evt) {
 				startVideoPlayer("#video-ecodesign-mp4");
@@ -167,8 +163,8 @@
 		});
 
 		function startVideoPlayer(videoAsset) {
-			console.log("setup video player");
-			console.log(videoAsset);
+			// console.log("setup video player");
+			// console.log(videoAsset);
 
 			let video = document.querySelector(videoAsset);
 			video.currentTime = 0;
@@ -188,7 +184,7 @@
 <body>
 	<div id="example-scanning-overlay" class="hidden">
 		<div class="inner">
-			<img src="./CE-Marker.JPG" />
+			<img src="./assets/CE-Marker.JPG" />
 			<div class="scanline"></div>
 		</div>
 	</div>
@@ -204,7 +200,7 @@
 		</div>
 	</div>
 	<a-scene
-		mindar-image="filterMinCF:0.0001; filterBeta: 0.001; uiScanning: #example-scanning-overlay; imageTargetSrc: ./CE-Marker.mind;"
+		mindar-image="filterMinCF:0.0001; filterBeta: 0.001; uiScanning: #example-scanning-overlay; imageTargetSrc: ./assets/CE-Marker.mind;"
 		color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
 		device-orientation-permission-ui="enabled: false">
 		<a-assets>
@@ -245,8 +241,6 @@
 
 			<a-video id="videoPlayer" visible="false" webkit-playsinline playsinline width="0.5" height="0.281"
 				position="0 0 0"></a-video>
-
-
 		</a-entity>
 	</a-scene>
 </body>

@@ -1,104 +1,142 @@
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
-    <style>
-      #example-scanning-overlay {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	background: transparent;
-	z-index: 2;
-      }
-      @media (min-aspect-ratio: 1/1) {
-	#example-scanning-overlay .inner {
-	  width: 50vh;
-	  height: 50vh;
-	}
-      }
-      @media (max-aspect-ratio: 1/1) {
-	#example-scanning-overlay .inner {
-	  width: 80vw;
-	  height: 80vw;
-	}
-      }
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
-      #example-scanning-overlay .inner {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
+	<style>
+		#example-scanning-overlay {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background: transparent;
+			z-index: 2;
+		}
 
-	background:
-	  linear-gradient(to right, white 10px, transparent 10px) 0 0,
-	  linear-gradient(to right, white 10px, transparent 10px) 0 100%,
-	  linear-gradient(to left, white 10px, transparent 10px) 100% 0,
-	  linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
-	  linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
-	  linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
-	  linear-gradient(to top, white 10px, transparent 10px) 0 100%,
-	  linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
-	background-repeat: no-repeat;
-	background-size: 40px 40px;
-      }
+		@media (min-aspect-ratio: 1/1) {
+			#example-scanning-overlay .inner {
+				width: 50vh;
+				height: 50vh;
+			}
+		}
 
-      #example-scanning-overlay.hidden {
-	display: none;
-      }
+		@media (max-aspect-ratio: 1/1) {
+			#example-scanning-overlay .inner {
+				width: 80vw;
+				height: 80vw;
+			}
+		}
 
-      #example-scanning-overlay img {
-	opacity: 0.6;
-	width: 90%;
-	align-self: center;
-      }
+		#example-scanning-overlay .inner {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
 
-      #example-scanning-overlay .inner .scanline {
-	position: absolute;
-	width: 100%;
-	height: 10px;
-	background: white;
-	animation: move 2s linear infinite;
-      }
-      @keyframes move {
-	0%, 100% { top: 0% }
-	50% { top: calc(100% - 10px) }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="example-scanning-overlay" class="hidden">
-      <div class="inner">
-	<img src="./CE-Marker.JPG"/>
-	<div class="scanline"></div>
-      </div>
-    </div>
+			background:
+				linear-gradient(to right, white 10px, transparent 10px) 0 0,
+				linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+				linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+				linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+				linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+				linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+				linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+				linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+			background-repeat: no-repeat;
+			background-size: 40px 40px;
+		}
 
-    <a-scene mindar-image="uiScanning: #example-scanning-overlay; imageTargetSrc: ./CE-Marker.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-		<img id="playbutton" src="./assets/play-button.png" />
-	  </a-assets>
+		#example-scanning-overlay.hidden {
+			display: none;
+		}
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+		#example-scanning-overlay img {
+			opacity: 0.6;
+			width: 90%;
+			align-self: center;
+		}
 
-      <a-entity mindar-image-target="targetIndex: 0">
-		<!-- <a-plane color="blue" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane> -->
+		#example-scanning-overlay .inner .scanline {
+			position: absolute;
+			width: 100%;
+			height: 10px;
+			background: white;
+			animation: move 2s linear infinite;
+		}
 
-		<a-image id="playbutton-ecodesign" class="clickable" src="#playbutton" alpha-test="0.5" position="0.1 0.3 0" height="0.1" width="0.1"></a-image>
-		<a-image id="playbutton-production" class="clickable" src="#playbutton" alpha-test="0.5" position="0.3 0.26 0" height="0.1" width="0.1"></a-image>
-		<a-image id="playbutton-usage" class="clickable" src="#playbutton" alpha-test="0.5" position="0.4 -0.02 0" height=".1" width=".1"></a-image>
-		<a-image id="playbutton-resources" class="clickable" src="#playbutton" alpha-test="0.5" position="-0.3 -0.15 0" height=".1" width=".1"></a-image>
-		<a-image id="playbutton-waste" class="clickable" src="#playbutton" alpha-test="0.5" position="-0.36 0.1 0" height=".1" width=".1"></a-image>
+		@keyframes move {
+
+			0%,
+			100% {
+				top: 0%
+			}
+
+			50% {
+				top: calc(100% - 10px)
+			}
+		}
+	</style>
 
 
-      </a-entity>
-    </a-scene>
-  </body>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const playButtonEcodesign = document.querySelector("#playbutton-ecodesign");
+			const videoResources = document.querySelector("#video-ecodesign");
+			
+			playButtonEcodesign.addEventListener('click', () => {
+				console.log("button ecodesign");
+				videoResources.play();
+			});
+		});
+	</script>
+
+
+
+</head>
+
+<body>
+	<div id="example-scanning-overlay" class="hidden">
+		<div class="inner">
+			<img src="./CE-Marker.JPG" />
+			<div class="scanline"></div>
+		</div>
+	</div>
+
+	<a-scene mindar-image="uiScanning: #example-scanning-overlay; imageTargetSrc: ./CE-Marker.mind;" color-space="sRGB"
+		renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+		device-orientation-permission-ui="enabled: false">
+		<a-assets>
+			<img id="playbutton" src="./assets/play-button.png" />
+			<video id="video-ecodesign-mp4" autoplay="true" loop="false" muted="true" src="./assets/pexels-karolina-grabowska-7716441.mp4"></video>
+		</a-assets>
+
+		<a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+		<a-entity mindar-image-target="targetIndex: 0">
+			<!-- <a-plane color="blue" opaciy="0.5" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane> -->
+
+			<a-image id="playbutton-ecodesign" class="clickable" src="#playbutton" alpha-test="0.5" position="0.1 0.3 0"
+				height="0.1" width="0.1"></a-image>
+			<a-image id="playbutton-production" class="clickable" src="#playbutton" alpha-test="0.5"
+				position="0.3 0.26 0" height="0.1" width="0.1"></a-image>
+			<a-image id="playbutton-usage" class="clickable" src="#playbutton" alpha-test="0.5" position="0.4 -0.02 0"
+				height=".1" width=".1"></a-image>
+			<a-image id="playbutton-resources" class="clickable" src="#playbutton" alpha-test="0.5"
+				position="-0.3 -0.15 0" height=".1" width=".1"></a-image>
+			<a-image id="playbutton-waste" class="clickable" src="#playbutton" alpha-test="0.5" position="-0.36 0.1 0"
+				height=".1" width=".1"></a-image>
+
+			<a-video id="video-ecodesign" src="#video-ecodesign-mp4" webkit-playsinline playsinline position="0 0 0"></a-video>
+              
+
+		</a-entity>
+	</a-scene>
+</body>
+
 </html>
-

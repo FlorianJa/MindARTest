@@ -90,10 +90,23 @@
 			const playButtonEcodesign = document.querySelector("#playbutton-ecodesign");
 			const playButtonProduction = document.querySelector("#playbutton-production");
 			
-			const videoResources = document.querySelector("#video-ecodesign");
+			const videoResources = document.querySelector("#video-ecodesign-mp4");
 
 			console.log("playbutton Ecodesign:");
 			console.log(playButtonEcodesign);
+
+			console.log("video Resources:");
+			console.log(videoResources);
+
+			const testVideo = document.createElement( "video" );
+			const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
+			if (canplayWebm == "") { 
+				console.log("cannot play webm");
+			}
+			else
+			{
+				console.log("can play webm");
+			}
 
 			// playButtonEcodesign.addEventListener('click', () => {
 			// 	console.log("button ecodesign");

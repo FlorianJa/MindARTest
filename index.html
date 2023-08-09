@@ -88,8 +88,13 @@
 		document.addEventListener("DOMContentLoaded", function () {
 			console.log("DOM content loaded");
 			const playButtonEcodesign = document.querySelector("#playbutton-ecodesign");
+			const playButtonProduction = document.querySelector("#playbutton-production");
+			
 			const videoResources = document.querySelector("#video-ecodesign");
 
+			console.log("playbutton Ecodesign:");
+			console.log(playButtonEcodesign);
+			
 			// playButtonEcodesign.addEventListener('click', () => {
 			// 	console.log("button ecodesign");
 			// 	videoResources.play();
@@ -97,6 +102,11 @@
 
 			playButtonEcodesign.addEventListener('click', function (evt) {
 				console.log("button ecodesign");
+				videoResources.play();
+			});
+
+			playButtonProduction.addEventListener('click', function (evt) {
+				console.log("button production");
 				videoResources.play();
 			});
 		});
@@ -139,8 +149,8 @@
 			<a-image id="playbutton-waste" class="clickable" src="#playbutton" alpha-test="0.5" position="-0.36 0.1 0"
 				height=".1" width=".1"></a-image>
 
-			<a-video id="video-ecodesign" src="#video-ecodesign-mp4" webkit-playsinline playsinline width="1*0.5"
-				height="0.5625*0.5" position="0 0 0"></a-video>
+			<a-video id="video-ecodesign" src="#video-ecodesign-mp4" webkit-playsinline playsinline width="0.5"
+				height="0.281" position="0 0 0"></a-video>
 
 
 		</a-entity>

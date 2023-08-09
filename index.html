@@ -160,7 +160,26 @@
 				startVideoPlayer("#video-waste-mp4");
 			});
 
+			let btn = document.querySelector("fullscreen-button");
+			btn.addEventListener("click", function () {
+				console.log("fullscreen but clicked");
+				let scene = document.querySelector('a-scene');
+				enterFullScreen(scene);
+			});
+
 		});
+
+		function enterFullScreen(element) {
+			if (element.requestFullscreen) {
+				element.requestFullscreen();
+			} else if (element.mozRequestFullScreen) {
+				element.mozRequestFullScreen();     // Firefox
+			} else if (element.webkitRequestFullscreen) {
+				element.webkitRequestFullscreen();  // Safari
+			} else if (element.msRequestFullscreen) {
+				element.msRequestFullscreen();      // IE/Edge
+			}
+		};
 
 		function startVideoPlayer(videoAsset) {
 			// console.log("setup video player");
@@ -199,6 +218,10 @@
 			</div>
 		</div>
 	</div>
+	<div style="position: absolute; z-index: 1000">
+		<button id="fullscreen-button">Fullscreen</button>
+	</div>
+
 	<a-scene
 		mindar-image="filterMinCF:0.0001; filterBeta: 0.001; uiScanning: #example-scanning-overlay; imageTargetSrc: ./assets/CE-Marker.mind;"
 		color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"

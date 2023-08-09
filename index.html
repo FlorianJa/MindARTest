@@ -89,8 +89,13 @@
 			console.log("DOM content loaded");
 			const playButtonEcodesign = document.querySelector("#playbutton-ecodesign");
 			const videoResources = document.querySelector("#video-ecodesign");
-			
-			playButtonEcodesign.addEventListener('click', () => {
+
+			// playButtonEcodesign.addEventListener('click', () => {
+			// 	console.log("button ecodesign");
+			// 	videoResources.play();
+			// });
+
+			playButtonEcodesign.addEventListener('click', function (evt) {
 				console.log("button ecodesign");
 				videoResources.play();
 			});
@@ -114,7 +119,8 @@
 		device-orientation-permission-ui="enabled: false">
 		<a-assets>
 			<img id="playbutton" src="./assets/play-button.png" />
-			<video id="video-ecodesign-mp4" autoplay="true" loop="false" muted="true" src="./assets/pexels-karolina-grabowska-7716441.mp4"></video>
+			<video id="video-ecodesign-mp4" autoplay="true" loop="false" muted="true"
+				src="./assets/pexels-karolina-grabowska-7716441.mp4"></video>
 		</a-assets>
 
 		<a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -133,8 +139,9 @@
 			<a-image id="playbutton-waste" class="clickable" src="#playbutton" alpha-test="0.5" position="-0.36 0.1 0"
 				height=".1" width=".1"></a-image>
 
-			<a-video id="video-ecodesign" src="#video-ecodesign-mp4" webkit-playsinline playsinline width="1*0.5" height="0.5625*0.5" position="0 0 0"></a-video>
-              
+			<a-video id="video-ecodesign" src="#video-ecodesign-mp4" webkit-playsinline playsinline width="1*0.5"
+				height="0.5625*0.5" position="0 0 0"></a-video>
+
 
 		</a-entity>
 	</a-scene>

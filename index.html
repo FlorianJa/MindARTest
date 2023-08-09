@@ -165,7 +165,7 @@
 		device-orientation-permission-ui="enabled: false">
 		<a-assets>
 			<img id="playbutton" src="./assets/play-button.png" />
-			<img id="playbutton" src="./assets/auto.png" />
+			<img id="auto" src="./assets/auto.png" />
 			
 			<video id="video-ecodesign-mp4" loop="false" muted="true" src="./assets/pexels-karolina-grabowska-7716441.mp4"></video>
 			<video id="video-production-mp4" loop="false" muted="true" src="./assets/pexels-karolina-grabowska-7716441.mp4"></video>
@@ -179,7 +179,7 @@
 
 		<a-entity mindar-image-target="targetIndex: 0">
 			
-			<a-image id="movingcar" src="#auto" alpha-test="0.5" position="0  0 0" height=".133" width=".645" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"></a-image>
+			<a-image id="movingcar" src="#auto" alpha-test="0.5" position="0  0 0" height=".133" width=".645" animation="property: rotation; to: 0 0 360; loop: true; dur: 5000"></a-image>
 
 			<a-image id="playbutton-ecodesign" class="clickable" src="#playbutton" alpha-test="0.5" position="0.1 0.3 0"
 				height="0.1" width="0.1"></a-image>
